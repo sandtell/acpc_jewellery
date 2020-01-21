@@ -1,0 +1,18 @@
+Google play console credentials 
+email sandtellmobileappcare@gmail.com
+pwd : Sandtell052019$
+
+Acpc
+-----------------------------
+Steps to generate Release APK
+
+step 1 : keytool -genkey -v -keystore acpcjewellery.keystore -alias acpcjewellery -keyalg RSA -keysize 2048 -validity 10000
+step 2 : jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore acpcjewellery.keystore app-release-unsigned.apk acpcjewellery
+step 3 : zipalign -v 4 app-release-unsigned.apk acpcjewellery.apk
+
+-----------------------------
+
+keytool -keystore acpcjewellery.keystore -list -v
+
+-----------------------------
+ 
