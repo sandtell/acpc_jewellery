@@ -104,14 +104,14 @@ export class OrderPage {
     var dat = this.orderDetail;
     this.httpClient.post(this.config.url + 'addtoorder', dat).subscribe((data: any) => {
       //this.loading.hide();
-      if (data.success == 1) {
+      if (data.success === "1") {
         this.shared.emptyCart();
         this.products = [];
         this.orderDetail = {};
         this.shared.orderDetails = {};
         this.navCtrl.setRoot(ThankYouPage);
       }
-      if (data.success == 0) { this.alert.show(data.message); }
+      if (data.success === "0") { this.alert.show(data.message); }
     }, err => {
 
       this.translate.get("Server Error").subscribe((res) => {
@@ -300,7 +300,7 @@ export class OrderPage {
   paypalPayment() {
     this.loading.autoHide(2000);
     this.payPal.init({
-      PayPalEnvironmentProduction: this.paypalClientId,
+      PayPalEnvironmentProduction: this.paypalEnviroment, //this.paypalClientId,
       PayPalEnvironmentSandbox: this.paypalClientId
     }).then(() => {
       // this.loading.hide();
@@ -333,15 +333,18 @@ export class OrderPage {
           //     "intent": "sale"
           //   }
           // }
-        }, () => {
+        }, (error) => {
+          alert('337 = ' + JSON.stringify(error));
           console.log('Error or render dialog closed without being successful');
           this.alert.show('Error or render dialog closed without being successful');
         });
-      }, () => {
-        console.log('Error in configuration');
+      }, (error) => {
+        alert('342 ' + JSON.stringify(error));
         this.alert.show('Error in configuration');
       });
-    }, () => {
+    }, (error) => {
+      alert('346 = ' + JSON.stringify(error));
+      console.log('Error in configuration');
       console.log('Error in configuration');
       this.alert.show('Error in initialization, maybe PayPal isnt supported or something else');
     });

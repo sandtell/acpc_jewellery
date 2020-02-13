@@ -15,4 +15,4 @@ step 3 : zipalign -v 4 app-release-unsigned.apk acpcjewellery.apk
 keytool -keystore acpcjewellery.keystore -list -v
 
 -----------------------------
- 
+http://acpc.sandtell.com/public/privacy_policy.html

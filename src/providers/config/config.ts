@@ -34,7 +34,7 @@ if (localStorage.langId == undefined) {
 export class ConfigProvider {
 
 
-  public yourSiteUrl: string = 'http://acpc.sandtell.com';
+  public yourSiteUrl: string = 'https://acpc.sandtell.com';
   public consumerKey: string = "dadb7a7c1557917902724bbbf5";
   public consumerSecret: string = "3ba77f821557917902b1d57373";
 
@@ -61,7 +61,8 @@ export class ConfigProvider {
   public cartButton = 1;//1 = show and 0 = hide
   public currency = localStorage.currency;
   public currencyPos = localStorage.currencyPos;
-  public paypalCurrencySymbol = localStorage.currency;
+  // public paypalCurrencySymbol = localStorage.currency;
+  public paypalCurrencySymbol = localStorage.currencyCode;
   public address;
   public fbId;
   public email;
